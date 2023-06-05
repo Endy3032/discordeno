@@ -131,7 +131,7 @@ export class DiscordenoShard {
     url.searchParams.set('v', this.gatewayConfig.version.toString())
     url.searchParams.set('encoding', 'json')
 
-    const socket: NodeWebSocket = process?.versions !== undefined ? new NodeWebSocket(url.toString()) : new WebSocket(url.toString())
+    const socket: NodeWebSocket = typeof process?.versions?.node !== undefined ? new NodeWebSocket(url.toString()) : new WebSocket(url.toString())
     this.socket = socket
 
     // TODO: proper event handling
